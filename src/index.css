@@ -1,0 +1,120 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-forest: #315c46;
+  --color-forest-700: #264a38;
+  --color-forest-800: #1d3a2c;
+  --color-ivory: #f8f8f5;
+  --color-sage: #e7efe8;
+  --color-sage-300: #cfdfd3;
+  --color-gold: #c8a96b;
+  --color-gold-700: #8a6d33;
+  --color-ink: #202820;
+  --color-muted: #566259;
+  --color-line: #e2e5dc;
+  --color-danger: #b3362b;
+  --color-danger-50: #fbeceb;
+
+  --font-sans: 'Inter Variable', 'Noto Sans Kannada', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Fraunces Variable', 'Noto Serif Kannada', ui-serif, Georgia, serif;
+
+  --shadow-card: 0 1px 2px rgb(32 40 32 / 0.05), 0 1px 1px rgb(32 40 32 / 0.03);
+  --shadow-pop: 0 8px 24px -6px rgb(32 40 32 / 0.18), 0 2px 6px rgb(32 40 32 / 0.06);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  /* Kannada text needs a little more line height so stacked vowel signs are never clipped. */
+  :lang(kn) body,
+  html[lang='kn'] body {
+    line-height: 1.7;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  button,
+  [role='button'],
+  a,
+  select,
+  input,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background: var(--color-sage-300);
+  }
+}
+
+@layer components {
+  .serif {
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+  }
+}
+
+/* Dialog / sheet motion (disabled for reduced-motion users). */
+@keyframes ol-fade-in { from { opacity: 0 } to { opacity: 1 } }
+@keyframes ol-fade-out { from { opacity: 1 } to { opacity: 0 } }
+@keyframes ol-pop-in { from { opacity: 0; transform: scale(0.97) } to { opacity: 1; transform: scale(1) } }
+@keyframes ol-slide-up { from { transform: translateY(100%) } to { transform: translateY(0) } }
+@keyframes ol-slide-right { from { transform: translateX(100%) } to { transform: translateX(0) } }
+@keyframes ol-rise { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
+
+.ol-overlay[data-state='open'] { animation: ol-fade-in 160ms ease-out; }
+.ol-overlay[data-state='closed'] { animation: ol-fade-out 120ms ease-in; }
+.ol-modal[data-state='open'] { animation: ol-pop-in 180ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.ol-sheet-bottom[data-state='open'] { animation: ol-slide-up 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.ol-sheet-right[data-state='open'] { animation: ol-slide-right 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.ol-rise { animation: ol-rise 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* React Flow tweaks: keep the canvas clean and on-brand. */
+.react-flow {
+  --xy-background-color: transparent;
+  --xy-edge-stroke-default: #8da396;
+  background: transparent;
+  font-family: inherit;
+}
+.react-flow__attribution { display: none; }
+.react-flow__node { cursor: pointer; }
+.react-flow__node:focus-visible { outline: none; }
+.react-flow__pane { cursor: grab; }
+.react-flow__pane.dragging { cursor: grabbing; }
+.react-flow__minimap { border-radius: 12px; border: 1px solid var(--color-line); overflow: hidden; box-shadow: var(--shadow-card); }
+
+/* Hidden file input should still be reachable by keyboard through its label button. */
+.sr-only-file { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Safe-area padding for notched phones. */
+.safe-bottom { padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
