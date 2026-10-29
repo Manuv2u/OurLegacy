@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookHeart, Download, GitFork, Languages, Lock, MonitorSmartphone, ShieldCheck, Sparkles, UserRoundX, HardDrive, FileDown } from 'lucide-react';
+import { ArrowRight, BookHeart, Download, GitFork, Languages, Lock, MonitorSmartphone, ShieldCheck, UserRoundX, HardDrive, FileDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/layout/Logo';
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
@@ -89,9 +89,7 @@ export default function LandingPage() {
         <section className="relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
           <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-0 h-[28rem] bg-[radial-gradient(60%_60%_at_50%_0%,#e7efe8_0%,transparent_70%)]" />
           <div className="relative mx-auto max-w-3xl text-center">
-            <p className="ol-rise mb-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-white px-3.5 py-1 text-xs font-medium text-gold-700">
-              <Sparkles className="size-3.5" aria-hidden /> OurLegacy
-            </p>
+            <img src="/logo-emblem.png" alt="" width={512} height={512} fetchPriority="high" data-testid="hero-emblem" className="ol-rise mx-auto mb-3 size-28 object-contain sm:size-36" />
             <h1 className="serif ol-rise text-balance text-4xl font-semibold leading-[1.15] text-forest-800 sm:text-6xl" style={{ animationDelay: '60ms' }}>
               {t('landing.hero.title')}
             </h1>

@@ -61,8 +61,11 @@ export function ExportSurface({ name, people, relationships, direction, layout, 
         <StaticTree tree={{ people, relationships }} direction={direction} layout={layout} ageGroups={ageGroups} />
       </div>
       {includeTitle && (
-        <div style={{ position: 'absolute', left: EXPORT_PADDING, right: EXPORT_PADDING, bottom: 16, fontSize: 12, lineHeight: 1.6, color: '#566259', display: 'flex', justifyContent: 'space-between' }}>
-          <span>{t('export.footer')}</span>
+        <div style={{ position: 'absolute', left: EXPORT_PADDING, right: EXPORT_PADDING, bottom: 14, fontSize: 12, lineHeight: 1.6, color: '#566259', display: 'flex', justifyContent: 'space-between' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <img src="/logo-mark.png" alt="" width={22} height={22} style={{ width: 22, height: 22, objectFit: 'contain' }} />
+            {t('export.footer')}
+          </span>
         </div>
       )}
     </div>

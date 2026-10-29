@@ -15,6 +15,9 @@ Premium, warm, minimal. Tokens live in `src/index.css` (`@theme`).
 
 Typography: Inter (UI), Fraunces (headings) and Noto Sans / Serif Kannada, all **self-hosted** via Fontsource so no request leaves the app. Icons: Lucide.
 
+## Logo
+The tree emblem is the application logo. The original artwork lives in `docs/brand/` (`OurLegacy-Family-Tree-Emblem.png`, plus a trimmed transparent `logo-full.png` lockup). `public/` contains only optimised derivatives: `logo-emblem.png` (512px, landing hero), `logo-mark.png` (176px, header, footer, editor toolbar, exports), `favicon-32.png`, `favicon.ico`, `apple-touch-icon.png` and `icon-512.png`. They have transparent backgrounds so they sit on ivory or white. The wordmark in the header is live text ("Our" in forest green, "Legacy" in gold) so it stays crisp and accessible; the emblem image is decorative and the link carries the name "OurLegacy". To regenerate the derivatives from a new source image, re-run the cropping/transparency step against `docs/brand/`.
+
 ## Rules
 - Rounded cards, subtle borders, restrained shadows. No heavy gradients, no rainbow relationship lines, no gender-coloured cards.
 - Connectors are two tones only: sage-green for parent → child, gold for partners; adoptive links are dashed.
